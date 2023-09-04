@@ -1,10 +1,17 @@
-﻿Console.WriteLine("Please type your name");
-var name = Console.ReadLine();
+﻿
 var date = DateTime.UtcNow;
 
-Menu(name, date);
+string name = GetName();
 
-void Menu(string? name, DateTime date)
+Menu(name);
+
+string GetName()
+{
+    Console.WriteLine("Please type your name");
+    var name = Console.ReadLine();
+    return name;
+}
+void Menu(string name)
 {
     Console.WriteLine("-----------------------------------------------");
     Console.WriteLine($"Hello {name.ToUpper()}. It's {date.DayOfWeek}. This is your math's game. That's great that your working in improving yourself!");
@@ -43,48 +50,124 @@ Q - Quit out");
     }
 
 }
-
-
-
-if (gameSelected.Trim().ToLower() == "a")
-{
-    AdditionGame("Addition game selected");
-}
-else if (gameSelected.Trim().ToLower() == "s")
-{
-    SubtractionGame("Subtraction game selected");
-}
-else if (gameSelected.Trim().ToLower() == "m")
-{
-    MultiplicationGame("Multiplication game selected");
-}
-else if (gameSelected.Trim().ToLower() == "d")
-{
-    DivisionGame("Division game selected");
-}
-else if (gameSelected.Trim().ToLower() == "q")
-{
-    Console.WriteLine("Goodbye");
-    Environment.Exit(1);
-}
-else
-{
-    Console.WriteLine("Invalid Input");
-}
-
 void AdditionGame(string message)
 {
     Console.WriteLine(message);
+
+    var Random = new Random();
+    var score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = Random.Next(1, 9);
+        secondNumber = Random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} + {secondNumber}");
+        var result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber + secondNumber)
+        {
+            Console.WriteLine("You answer was correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("You answer is incorrect!");
+        }
+        if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
+    }   
 }
 void SubtractionGame(string message)
 {
     Console.WriteLine(message);
+
+    var Random = new Random();
+    var score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = Random.Next(1, 9);
+        secondNumber = Random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} - {secondNumber}");
+        var result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber - secondNumber)
+        {
+            Console.WriteLine("You answer was correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("You answer is incorrect!");
+        }
+        if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
+    }
 }
 void MultiplicationGame(string message)
 {
     Console.WriteLine(message);
+
+    var Random = new Random();
+    var score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = Random.Next(1, 9);
+        secondNumber = Random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} * {secondNumber}");
+        var result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber * secondNumber)
+        {
+            Console.WriteLine("You answer was correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("You answer is incorrect!");
+        }
+        if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
+    }
 }
 void DivisionGame(string message)
 {
     Console.WriteLine(message);
+
+    var Random = new Random();
+    var score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 5; i++)
+    {
+        firstNumber = Random.Next(1, 9);
+        secondNumber = Random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} / {secondNumber}");
+        var result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber / secondNumber)
+        {
+            Console.WriteLine("You answer was correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("You answer is incorrect!");
+        }
+        if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
+    }
 }
+
