@@ -2,41 +2,49 @@
 var name = Console.ReadLine();
 var date = DateTime.UtcNow;
 
-Console.WriteLine("-----------------------------------------------");
-Console.WriteLine($"Hello {name.ToUpper()}. It's {date.DayOfWeek}. This is your math's game. That's great that your working in improving yourself!");
-Console.WriteLine($@"What game would you like to play? Choose below.
+Menu(name, date);
+
+void Menu(string? name, DateTime date)
+{
+    Console.WriteLine("-----------------------------------------------");
+    Console.WriteLine($"Hello {name.ToUpper()}. It's {date.DayOfWeek}. This is your math's game. That's great that your working in improving yourself!");
+    Console.WriteLine($@"What game would you like to play? Choose below.
 A - Addition
 S - Subtraction
 M - Multiplication
 D - Division
 Q - Quit out");
-Console.WriteLine("------------------------------------------------");
+    Console.WriteLine("------------------------------------------------");
 
-var gameSelected = Console.ReadLine();
+    var gameSelected = Console.ReadLine();
 
-switch (gameSelected.Trim().ToLower())
-{
-    case "a":
-        AdditionGame("Addition game selected"); 
-        break;
-    case "s":
-        SubtractionGame("Subtraction game selected");
-        break;
-    case "m":
-        MultiplicationGame("Multiplication game selected");
-        break;
-    case "d":
-        DivisionGame("Division game selected");
-        break;
-    case "q":
-        Console.WriteLine("Goodbye");
-        Environment.Exit(1);
-        break;
-    default:
-        Console.WriteLine("Invalid request");
-        Environment.Exit(1);
-        break;
+    switch (gameSelected.Trim().ToLower())
+    {
+        case "a":
+            AdditionGame("Addition game selected");
+            break;
+        case "s":
+            SubtractionGame("Subtraction game selected");
+            break;
+        case "m":
+            MultiplicationGame("Multiplication game selected");
+            break;
+        case "d":
+            DivisionGame("Division game selected");
+            break;
+        case "q":
+            Console.WriteLine("Goodbye");
+            Environment.Exit(1);
+            break;
+        default:
+            Console.WriteLine("Invalid request");
+            Environment.Exit(1);
+            break;
+    }
+
 }
+
+
 
 if (gameSelected.Trim().ToLower() == "a")
 {
