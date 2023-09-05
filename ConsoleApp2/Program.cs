@@ -1,4 +1,6 @@
 ﻿
+using static System.Formats.Asn1.AsnWriter;
+
 var date = DateTime.UtcNow;
 
 string name = GetName();
@@ -142,23 +144,17 @@ void MultiplicationGame(string message)
 }
 void DivisionGame(string message)
 {
-    Console.WriteLine(message);
-
-    var Random = new Random();
     var score = 0;
-
-    int firstNumber;
-    int secondNumber;
-
-    for (int i = 0; i < 5; i++)
+    for (int i = 0;i < 5;i++)
     {
-        firstNumber = Random.Next(1, 9);
-        secondNumber = Random.Next(1, 9);
+        var divisionNumbers = GetDivisionNumbers();
+        var firstNumber = divisionNumbers[0];
+        var secondNumber = divisionNumbers[1];
 
         Console.WriteLine($"{firstNumber} / {secondNumber}");
         var result = Console.ReadLine();
 
-        if (int.Parse(result) == firstNumber / secondNumber)
+        if (int.Parse(result) == firstNumber * secondNumber)
         {
             Console.WriteLine("You answer was correct!");
             score++;
@@ -171,3 +167,25 @@ void DivisionGame(string message)
     }
 }
 
+
+int[] GetDivisionNumbers()
+{
+    var random = new Random();
+    var firstNumber = random.Next(1, 99);
+    var secondNumber = random.Next(1, 99);
+
+    var result = new int[2];
+
+
+    while (firstNumber % secondNumber != 0) 
+    {
+        firstNumber = random.Next(1, 99);
+        secondNumber = random.Next(1, 99);
+    }
+
+    result[0] = firstNumber;
+    result[1] = secondNumber;
+    
+    return result;
+
+}
