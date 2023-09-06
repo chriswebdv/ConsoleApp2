@@ -17,40 +17,47 @@ void Menu(string name)
 {
     Console.WriteLine("-----------------------------------------------");
     Console.WriteLine($"Hello {name.ToUpper()}. It's {date.DayOfWeek}. This is your math's game. That's great that your working in improving yourself!");
-    Console.WriteLine($@"What game would you like to play? Choose below.
-A - Addition
-S - Subtraction
-M - Multiplication
-D - Division
-Q - Quit out");
-    Console.WriteLine("------------------------------------------------");
+    Console.WriteLine("\n");
 
-    var gameSelected = Console.ReadLine();
+    var isGameOn = true;
 
-    switch (gameSelected.Trim().ToLower())
+    do
     {
-        case "a":
-            AdditionGame("Addition game selected");
-            break;
-        case "s":
-            SubtractionGame("Subtraction game selected");
-            break;
-        case "m":
-            MultiplicationGame("Multiplication game selected");
-            break;
-        case "d":
-            DivisionGame("Division game selected");
-            break;
-        case "q":
-            Console.WriteLine("Goodbye");
-            Environment.Exit(1);
-            break;
-        default:
-            Console.WriteLine("Invalid request");
-            Environment.Exit(1);
-            break;
-    }
+        Console.WriteLine($@"What game would you like to play? Choose below.
+        A - Addition
+        S - Subtraction
+        M - Multiplication
+        D - Division
+        Q - Quit out");
+        Console.WriteLine("------------------------------------------------");
 
+        var gameSelected = Console.ReadLine();
+
+        switch (gameSelected.Trim().ToLower())
+        {
+            case "a":
+                AdditionGame("Addition game");
+                break;
+            case "s":
+                SubtractionGame("Subtraction game");
+                break;
+            case "m":
+                MultiplicationGame("Multiplication game");
+                break;
+            case "d":
+                DivisionGame("Division game");
+                break;
+            case "q":
+                Console.WriteLine("Goodbye");
+                Environment.Exit(1);
+                break;
+            default:
+                Console.WriteLine("Invalid request");
+                Environment.Exit(1);
+                break;
+        }
+    } while (isGameOn);
+    
 }
 void AdditionGame(string message)
 {
@@ -72,12 +79,14 @@ void AdditionGame(string message)
 
         if (int.Parse(result) == firstNumber + secondNumber)
         {
-            Console.WriteLine("You answer was correct!");
+            Console.WriteLine("You answer was correct! Type any key for the next question");
             score++;
+            Console.ReadLine();
         }
         else
         {
-            Console.WriteLine("You answer is incorrect!");
+            Console.WriteLine("You answer is incorrect! Type any key for the next question");
+            Console.ReadLine();
         }
         if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
     }   
@@ -102,12 +111,14 @@ void SubtractionGame(string message)
 
         if (int.Parse(result) == firstNumber - secondNumber)
         {
-            Console.WriteLine("You answer was correct!");
+            Console.WriteLine("You answer was correct! Type any key for the next question");
             score++;
+            Console.ReadLine();
         }
         else
         {
-            Console.WriteLine("You answer is incorrect!");
+            Console.WriteLine("You answer is incorrect! Type any key for the next question");
+            Console.ReadLine();
         }
         if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
     }
@@ -132,12 +143,14 @@ void MultiplicationGame(string message)
 
         if (int.Parse(result) == firstNumber * secondNumber)
         {
-            Console.WriteLine("You answer was correct!");
+            Console.WriteLine("You answer was correct! Type any key for the next question");
             score++;
+            Console.ReadLine();
         }
         else
         {
-            Console.WriteLine("You answer is incorrect!");
+            Console.WriteLine("You answer is incorrect! Type any key for the next question");
+            Console.ReadLine();
         }
         if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
     }
@@ -147,6 +160,9 @@ void DivisionGame(string message)
     var score = 0;
     for (int i = 0;i < 5;i++)
     {
+        Console.Clear();
+        Console.WriteLine(message);
+
         var divisionNumbers = GetDivisionNumbers();
         var firstNumber = divisionNumbers[0];
         var secondNumber = divisionNumbers[1];
@@ -154,14 +170,16 @@ void DivisionGame(string message)
         Console.WriteLine($"{firstNumber} / {secondNumber}");
         var result = Console.ReadLine();
 
-        if (int.Parse(result) == firstNumber * secondNumber)
+        if (int.Parse(result) == firstNumber / secondNumber)
         {
-            Console.WriteLine("You answer was correct!");
+            Console.WriteLine("You answer was correct! Type any key for the next question");
             score++;
+            Console.ReadLine();
         }
         else
         {
-            Console.WriteLine("You answer is incorrect!");
+            Console.WriteLine("You answer is incorrect! Type any key for the next question");
+            Console.ReadLine();
         }
         if (i == 4) Console.WriteLine($"Game over, your final score is {score}");
     }
